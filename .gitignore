@@ -1,0 +1,12 @@
+/build_local/
+/build_staging/
+/build_production/
+/cache/
+/source/assets/build/
+/source/assets/webfonts/
+/node_modules/
+/vendor/
+/.idea/
+/.vscode/
+npm-debug.log
+yarn-error.log
