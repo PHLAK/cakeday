@@ -71,5 +71,10 @@ var app = new Vue({
         if (this.$route.query.username) {
             this.submit(this.$route.query.username);
         }
-    }
+    },
+    watch: {
+        '$route.query.username'() {
+            this.submit(this.$route.query.username);
+        }
+    },
 });
