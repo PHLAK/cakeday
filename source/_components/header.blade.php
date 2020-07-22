@@ -1,7 +1,10 @@
 <div class="text-center">
     <a href="/">
-        <h1 class="font-light text-white text-4xl">
-            <i class="fas fa-birthday-cake fa-fw text-reddit"></i> Reddit Cake Day
+        <h1 class="flex justify-center items-center space-x-2 font-light text-white text-4xl">
+            <img src="/assets/images/cake.png" alt="Mmm... cake" class="w-10 h-10">
+            <span>
+                Reddit Cake Day
+            </span>
         </h1>
     </a>
 
