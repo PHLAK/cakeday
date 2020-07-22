@@ -6,7 +6,7 @@
 <meta name="description" content="Discover the day you joined Reddit. It’s like your birthday, but for Reddit!">
 
 <link rel="canonical" href="{{ $page->getUrl() }}">
-<link rel="icon" href="images/cake.svg">
+<link rel="icon" href="/assets/images/cake.png">
 <link rel="stylesheet" href="{{ mix('css/app.css', 'assets/build') }}">
 
 <title>Cake Day</title>
