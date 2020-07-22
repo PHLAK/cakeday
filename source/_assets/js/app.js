@@ -1,10 +1,10 @@
 const axios = require('axios');
+const cache = window.localStorage;
 const { DateTime } = require('luxon');
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter)
-
 const router = new VueRouter({ mode: 'history' });
 
 var app = new Vue({
@@ -16,10 +16,7 @@ var app = new Vue({
         bannerImage: null,
         userImage: null,
         created: 0,
-        karma: {
-            comment: 0,
-            link: 0
-        },
+        karma: { comment: 0, link: 0 },
         profileUrl: null,
         loading: false,
         loaded: false,
@@ -54,23 +51,42 @@ var app = new Vue({
             this.loaded = false;
             this.loading = true;
 
+            let userData = cache.getItem(search.toLowerCase());
+
+            if (userData !== null) {
+                let {expiration, data} = JSON.parse(userData);
+
+                if (DateTime.local() <= DateTime.fromISO(expiration)) {
+                    this.setUserData(data);
+                    return;
+                }
+            }
+
             axios.get(`https://api.reddit.com/user/${search}/about`).then(response => {
-                this.username = response.data.data.name;
-                this.bannerImage = response.data.data.subreddit.banner_img;
-                this.userImage = response.data.data.subreddit.icon_img;
-                this.created = response.data.data.created;
-                this.karma.comment = response.data.data.comment_karma;
-                this.karma.link = response.data.data.link_karma;
-                this.profileUrl = `https://www.reddit.com${response.data.data.subreddit.url}`;
-
-                router.push({ query: { username: response.data.data.name } }).catch(() => {});
-
-                this.loaded = true;
+                cache.setItem(search.toLowerCase(), JSON.stringify({
+                    expiration: DateTime.local().plus({ minutes: 10 }),
+                    data: response.data.data
+                }));
+                this.setUserData(response.data.data);
             }).catch(response => {
-                this.error = true;
                 console.log(response)
+                this.error = true;
+                this.loading = false;
             });
+        },
+        setUserData(data) {
+            this.username = data.name;
+            this.bannerImage = data.subreddit.banner_img;
+            this.userImage = data.subreddit.icon_img;
+            this.created = data.created;
+            this.karma.comment = data.comment_karma;
+            this.karma.link = data.link_karma;
+            this.profileUrl = `https://www.reddit.com${data.subreddit.url}`;
 
+            router.push({ query: { username: data.name } }).catch(() => {});
+
+            this.error = false;
+            this.loaded = true;
             this.loading = false;
         }
     },
