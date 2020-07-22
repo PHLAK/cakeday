@@ -7,9 +7,14 @@ mix.setPublicPath('source/assets/build');
 
 mix.jigsaw();
 
+mix.sass('source/_assets/sass/app.scss', 'css');
+
 mix.js('source/_assets/js/app.js', 'js');
 
-mix.sass('source/_assets/sass/app.scss', 'css');
+mix.copyDirectory(
+    'node_modules/@fortawesome/fontawesome-free/webfonts',
+    'source/assets/webfonts'
+);
 
 mix.options({
     processCssUrls: false,

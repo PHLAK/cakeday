@@ -3,7 +3,7 @@
 @section('content')
     @include('_components.header')
 
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center" v-show="(loaded && ! loading)">
         <div class="bg-white rounded-lg shadow-lg text-xl overflow-hidden my-6">
             <img :src="bannerImage" alt="" class="max-w-24 h-32 object-cover">
 
@@ -26,7 +26,7 @@
 
                 <hr class="border-t-4 border-orange-600 w-4/5 my-6">
 
-                <div class="flex justify-around w-full">
+                <div class="flex justify-around space-x-4 w-full">
                     <div class="flex flex-col items-center">
                         <div class="font-mono">@{{ karma.link }}</div>
 
@@ -42,12 +42,31 @@
             </div>
         </div>
 
-        <div>
-            {{-- 🎂 My Reddit cake day is [[cakeDay]]! Since joining I've received [[karma.link]] link karama and [[karma.comment]] comment karma. Find out your Reddit cake day at https://cakeday.phlak.dev #Reddit #CakeDay --}}
-            <a href="https://twitter.com/intent/tweet?text=Coming%20soon!" target="_blank" class="underline">
-                Tweet
+        <div class="flex justify-center space-x-4">
+            <a :href="redditShareUrl" target="_blank" class="text-gray-400 hover:text-reddit" title="Share on Reddit">
+                <i class="fab fa-reddit fa-2x"></i>
+            </a>
+
+            <a :href="twitterShareUrl" target="_blank" title="Share on Twitter" class="text-gray-400 hover:text-twitter">
+                <i class="fab fa-twitter fa-2x"></i>
+            </a>
+
+            <a href="#"
+                target="_blank" title="Share on Facebook" class="text-gray-400 hover:text-facebook"
+            >
+                <i class="fab fa-facebook-square fa-2x"></i>
             </a>
         </div>
+    </div>
+
+    <div class="flex flex-col items-center" v-show="! (loaded || loading)">
+        <p class="text-gray-800 text-xl text-center">
+            Search for a Reddit user by username to see their stats.
+        </p>
+    </div>
+
+    <div class="flex flex-col items-center" v-show="loading">
+        <i class="fas fa-spinner fa-4x fa-pulse"></i>
     </div>
 
     @include('_components.footer')
