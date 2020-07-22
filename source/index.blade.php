@@ -51,9 +51,7 @@
                 <i class="fab fa-twitter fa-2x"></i>
             </a>
 
-            <a href="#"
-                target="_blank" title="Share on Facebook" class="text-gray-400 hover:text-facebook"
-            >
+            <a :href="facebookShareUrl" target="_blank" title="Share on Facebook" class="text-gray-400 hover:text-facebook">
                 <i class="fab fa-facebook-square fa-2x"></i>
             </a>
         </div>

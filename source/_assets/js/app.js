@@ -22,6 +22,9 @@ var app = new Vue({
         cakeDay() {
             return DateTime.fromSeconds(this.created).toLocaleString(DateTime.DATE_FULL);
         },
+        facebookShareUrl() {
+            return 'https://www.facebook.com/sharer/sharer.php?u=https://cakeday.phlak.net';
+        },
         redditShareUrl() {
             let title = encodeURI(`🎂 My Reddit cake day is ${this.cakeDay}! Discover yours at https://cakeday.phak.net`);
 
