@@ -29,16 +29,16 @@ var app = new Vue({
             return DateTime.fromSeconds(this.created).toLocaleString(DateTime.DATE_FULL);
         },
         facebookShareUrl() {
-            return 'https://www.facebook.com/sharer/sharer.php?u=https://cakeday.phlak.net';
+            return `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
         },
         redditShareUrl() {
-            let title = encodeURI(`🎂 My Reddit cake day is ${this.cakeDay}! Discover yours at https://cakeday.phak.net`);
+            let title = encodeURI(`🎂 My Reddit cake day is ${this.cakeDay}! Discover yours at ${window.location.origin}`);
 
-            return `http://www.reddit.com/submit?url=https://cakeday.phlak.dev&title=${title}`;
+            return `http://www.reddit.com/submit?url=${window.location.href}&title=${title}`;
         },
         twitterShareUrl() {
             let text = encodeURI(
-                `🎂 My Reddit cake day is ${this.cakeDay}! Since joining I've received ${this.karma.link} link karama and ${this.karma.comment} comment karma.\n\nDiscover your Reddit cake day at https://cakeday.phlak.dev`
+                `🎂 My Reddit cake day is ${this.cakeDay}! Since joining I've received ${this.karma.link} link karama and ${this.karma.comment} comment karma.\n\nDiscover your Reddit cake day at ${window.location.origin}`
             );
 
             return `https://twitter.com/intent/tweet?text=${text}`;
