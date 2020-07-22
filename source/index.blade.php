@@ -69,7 +69,7 @@
 
     <div class="flex flex-col items-center" v-show="(error && ! loading)">
         <p class="font-light text-gray-400 text-2xl text-center">
-            I'm sorry Dave, I'm affraid I can't do that.
+            <i class="fas fa-exclamation-circle fa-fw"></i> I'm sorry Dave, I'm affraid I can't do that.
         </p>
     </div>
 
