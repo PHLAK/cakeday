@@ -56,5 +56,8 @@ var app = new Vue({
             this.loading = false;
             this.loaded = true;
         }
+    },
+    mounted: function () {
+        window.addEventListener('keyup', e => e.keyCode == 191 && this.$refs.searchInput.focus());
     }
 });
