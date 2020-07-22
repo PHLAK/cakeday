@@ -10,7 +10,7 @@
 
 <title>Cake Day</title>
 
-<div id="app" class="bg-gray-200 flex flex-col justify-between items-center min-h-screen font-sans p-4">
+<div id="app" class="bg-gray-800 flex flex-col justify-between items-center min-h-screen font-sans p-4">
     @yield('content')
 </div>
 
