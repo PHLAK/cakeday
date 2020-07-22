@@ -22,7 +22,8 @@ var app = new Vue({
         },
         profileUrl: null,
         loading: false,
-        loaded: false
+        loaded: false,
+        error: false
     },
     computed: {
         cakeDay() {
@@ -63,10 +64,14 @@ var app = new Vue({
                 this.profileUrl = `https://www.reddit.com${response.data.data.subreddit.url}`;
 
                 router.push({ query: { username: response.data.data.name } }).catch(() => {});
-            }).catch(response => console.log(response));
+
+                this.loaded = true;
+            }).catch(response => {
+                this.error = true;
+                console.log(response)
+            });
 
             this.loading = false;
-            this.loaded = true;
         }
     },
     mounted: function () {

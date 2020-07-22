@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col items-center" v-show="! (loaded || loading)">
+    <div class="flex flex-col items-center" v-show="! (loaded || loading || error)">
         <p class="font-light text-gray-400 text-2xl text-center">
             Search for a Reddit user by username to see their stats.
         </p>
@@ -65,6 +65,12 @@
 
     <div class="flex flex-col items-center" v-show="loading">
         <i class="fas fa-spinner fa-4x fa-pulse"></i>
+    </div>
+
+    <div class="flex flex-col items-center" v-show="(error && ! loading)">
+        <p class="font-light text-gray-400 text-2xl text-center">
+            I'm sorry Dave, I'm affraid I can't do that.
+        </p>
     </div>
 
     @include('_components.footer')
