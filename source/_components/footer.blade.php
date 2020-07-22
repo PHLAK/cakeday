@@ -5,7 +5,7 @@
     </p>
 
     <p class="my-2">
-        &copy; 2020
+        &copy; {{ date('Y') }}
         <a href="https://www.chriskankiewicz.com" class="underline hover:text-gray-600">
             Chris Kankiewicz
         </a>
