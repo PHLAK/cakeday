@@ -24,7 +24,7 @@
                     </div>
                 </p>
 
-                <hr class="border-t-4 border-orange-600 w-4/5 my-6">
+                <hr class="border-t-4 border-reddit w-4/5 my-6">
 
                 <div class="flex justify-around space-x-4 w-full">
                     <div class="flex flex-col items-center">
