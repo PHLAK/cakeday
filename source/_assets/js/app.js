@@ -46,6 +46,10 @@ var app = new Vue({
     },
     methods: {
         submit(search) {
+            if (search == this.username) {
+                return;
+            }
+
             this.loaded = false;
             this.loading = true;
 
