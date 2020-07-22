@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="description" content="{{ $page->description }}">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Discover the day you joined Reddit. It’s like your birthday, but for Reddit!">
 
 <link rel="canonical" href="{{ $page->getUrl() }}">
 <link rel="icon" href="images/cake.svg">
