@@ -7,7 +7,7 @@
         Discover the day you joined Reddit!
     </h2>
 
-    <form action="." method="GET" v-on:submit.prevent="submit"
+    <form action="." method="GET" v-on:submit.prevent="submit(search)"
         class="group relative bg-white rounded-full shadow-inner px-10 py-2 mt-6"
     >
         <input type="text" name="username" placeholder="Reddit username" v-model="search" ref="searchInput" v-on:focus="$event.target.select()">

@@ -1,9 +1,15 @@
-window.Vue = require('vue');
 const axios = require('axios');
 const { DateTime } = require('luxon');
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter)
+
+const router = new VueRouter({ mode: 'history' });
 
 var app = new Vue({
     el: '#app',
+    router,
     data: {
         search: null,
         username: null,
@@ -39,11 +45,11 @@ var app = new Vue({
         }
     },
     methods: {
-        submit() {
+        submit(search) {
             this.loaded = false;
             this.loading = true;
 
-            axios.get(`https://api.reddit.com/user/${this.search}/about`).then(response => {
+            axios.get(`https://api.reddit.com/user/${search}/about`).then(response => {
                 this.username = response.data.data.name;
                 this.bannerImage = response.data.data.subreddit.banner_img;
                 this.userImage = response.data.data.subreddit.icon_img;
@@ -51,6 +57,8 @@ var app = new Vue({
                 this.karma.comment = response.data.data.comment_karma;
                 this.karma.link = response.data.data.link_karma;
                 this.profileUrl = `https://www.reddit.com${response.data.data.subreddit.url}`;
+
+                router.push({ query: { username: response.data.data.name } }).catch(() => {});
             }).catch(response => console.log(response));
 
             this.loading = false;
@@ -59,5 +67,9 @@ var app = new Vue({
     },
     mounted: function () {
         window.addEventListener('keyup', e => e.keyCode == 191 && this.$refs.searchInput.focus());
+
+        if (this.$route.query.username) {
+            this.submit(this.$route.query.username);
+        }
     }
 });
