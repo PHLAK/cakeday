@@ -9,7 +9,7 @@
 <link rel="icon" href="/assets/images/cake.png">
 <link rel="stylesheet" href="{{ mix('css/app.css', 'assets/build') }}">
 
-<title>Cake Day</title>
+<title>Reddit Cake Day</title>
 
 <div id="app" class="bg-gray-800 flex flex-col justify-between items-center min-h-screen font-sans p-4">
     @yield('content')
