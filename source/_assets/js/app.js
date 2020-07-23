@@ -12,19 +12,20 @@ var app = new Vue({
     router,
     data: {
         search: null,
-        username: null,
-        bannerImage: null,
-        userImage: null,
-        created: 0,
-        karma: { comment: 0, link: 0 },
-        profileUrl: null,
+        user: {
+            name: null,
+            created: 0,
+            comment_karma: 0,
+            link_karma: 0,
+            subreddit: { banner_img: null, icon_img: null, url: null }
+        },
         loading: false,
         loaded: false,
         error: false
     },
     computed: {
         cakeDay() {
-            return DateTime.fromSeconds(this.created).toLocaleString(DateTime.DATE_FULL);
+            return DateTime.fromSeconds(this.user.created).toLocaleString(DateTime.DATE_FULL);
         },
         facebookShareUrl() {
             let url = encodeURI(window.location.href);
@@ -34,14 +35,14 @@ var app = new Vue({
         redditShareUrl() {
             let url = encodeURIComponent(window.location.href);
             let title = encodeURI(
-                `🎂 My Reddit cake day is ${this.cakeDay}! Since joining I've received ${this.karma.link} link karma and ${this.karma.comment} comment karma.`
+                `🎂 My Reddit cake day is ${this.cakeDay}! Since joining I've received ${this.user.link_karma} link karma and ${this.user.comment_karma} comment karma.`
             );
 
             return `http://www.reddit.com/submit?url=${url}&title=${title}`;
         },
         twitterShareUrl() {
             let text = encodeURI(
-                `🎂 My Reddit cake day is ${this.cakeDay}! Since joining I've received ${this.karma.link} link karma and ${this.karma.comment} comment karma.\n\n${window.location.href}`
+                `🎂 My Reddit cake day is ${this.cakeDay}! Since joining I've received ${this.user.link_karma} link karma and ${this.user.comment_karma} comment karma.\n\n${window.location.href}`
             );
 
             return `https://twitter.com/intent/tweet?text=${text}`;
@@ -49,7 +50,7 @@ var app = new Vue({
     },
     methods: {
         submit(search) {
-            if (search == this.username) {
+            if (search == this.user.name) {
                 return;
             }
 
@@ -74,21 +75,15 @@ var app = new Vue({
                 }));
                 this.setUserData(response.data.data);
             }).catch(response => {
-                console.log(response)
+                console.log(response);
                 this.error = true;
                 this.loading = false;
             });
         },
         setUserData(data) {
-            this.username = data.name;
-            this.bannerImage = data.subreddit.banner_img || '/assets/images/banner.png';
-            this.userImage = data.subreddit.icon_img;
-            this.created = data.created;
-            this.karma.comment = data.comment_karma;
-            this.karma.link = data.link_karma;
-            this.profileUrl = `https://www.reddit.com${data.subreddit.url}`;
+            this.user = data;
 
-            router.push({ query: { username: data.name } }).catch(() => {});
+            router.push({ query: { username: this.user.name } }).catch(() => {});
 
             this.error = false;
             this.loaded = true;
@@ -106,5 +101,5 @@ var app = new Vue({
         '$route.query.username'() {
             this.submit(this.$route.query.username);
         }
-    },
+    }
 });

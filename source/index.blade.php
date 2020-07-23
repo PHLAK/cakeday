@@ -5,14 +5,14 @@
 
     <div class="flex flex-col items-center" v-show="(loaded && ! loading)">
         <div class="bg-white rounded-lg shadow-lg text-xl overflow-hidden my-6">
-            <img :src="bannerImage" alt="" class="max-w-24 h-32 object-cover">
+            <img :src="user.subreddit.banner_img" alt="" class="max-w-24 h-32 object-cover">
 
             <div class="flex flex-col items-center p-6">
-                <img :src="userImage" :alt="username" class="relative rounded-full border-8 border-white w-40 h-40 -mt-20">
+                <img :src="user.subreddit.icon_img" :alt="user.name" class="relative rounded-full border-8 border-white w-40 h-40 -mt-20">
 
                 <p class="leading-loose">
-                    <a :href="profileUrl" class="text-3xl inline-block hover:underline">
-                        @{{ username }}
+                    <a :href="`https://www.reddit.com${user.subreddit.url}`" class="text-3xl inline-block hover:underline">
+                        @{{ user.name }}
                     </a>
 
                     <p class="text-base text-gray-600">
@@ -28,13 +28,13 @@
 
                 <div class="flex justify-around space-x-4 w-full">
                     <div class="flex flex-col items-center">
-                        <div class="font-mono">@{{ karma.link }}</div>
+                        <div class="font-mono">@{{ user.link_karma }}</div>
 
                         <div class="text-gray-600 text-sm">Link Karma</div>
                     </div>
 
                     <div class="flex flex-col items-center">
-                        <div class="font-mono">@{{ karma.comment }}</div>
+                        <div class="font-mono">@{{ user.comment_karma }}</div>
 
                         <div class="text-gray-600 text-sm">Comment Karma</div>
                     </div>
