@@ -81,7 +81,7 @@ var app = new Vue({
         },
         setUserData(data) {
             this.username = data.name;
-            this.bannerImage = data.subreddit.banner_img;
+            this.bannerImage = data.subreddit.banner_img || '/assets/images/banner.png';
             this.userImage = data.subreddit.icon_img;
             this.created = data.created;
             this.karma.comment = data.comment_karma;
