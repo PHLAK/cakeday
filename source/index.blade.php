@@ -77,7 +77,7 @@
             </svg>
 
             <p class="font-light text-2xl">
-                I'm sorry Dave, I'm affraid I can't do that.
+                I'm sorry Dave, I'm afraid I can't do that.
             </p>
         </div>
     </div>
