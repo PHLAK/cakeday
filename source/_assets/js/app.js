@@ -27,6 +27,15 @@ var app = new Vue({
         cakeDay() {
             return DateTime.fromSeconds(this.user.created).toLocaleString(DateTime.DATE_FULL);
         },
+        title() {
+            let title = 'Reddit Cake Day'
+
+            if (this.user.name == undefined) {
+                return title;
+            }
+
+            return `${this.user.name} • ${title}`;
+        },
         facebookShareUrl() {
             let url = encodeURI(window.location.href);
 
@@ -98,6 +107,9 @@ var app = new Vue({
         }
     },
     watch: {
+        '$route'() {
+            document.title = this.title;
+        },
         '$route.query.username'() {
             this.submit(this.$route.query.username);
         }
