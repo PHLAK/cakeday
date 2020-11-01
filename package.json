@@ -11,7 +11,7 @@
     "dependencies": {
         "luxon": "^1.24.1",
         "vue": "^2.6.11",
-        "vue-router": "^3.4.2"
+        "vue-router": "^3.4.8"
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.14.0",
