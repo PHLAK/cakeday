@@ -9,18 +9,18 @@
         "watch": "npm run local -- --watch"
     },
     "dependencies": {
-        "luxon": "^1.24.1",
-        "vue": "^2.6.11",
-        "vue-router": "^3.4.2"
+        "luxon": "^1.25.0",
+        "vue": "^2.6.12",
+        "vue-router": "^3.4.9"
     },
     "devDependencies": {
-        "@fortawesome/fontawesome-free": "^5.14.0",
+        "@fortawesome/fontawesome-free": "^5.15.1",
         "cross-env": "^3.2.4",
         "laravel-mix": "^4.0.0",
-        "laravel-mix-jigsaw": "^1.3.0",
-        "sass": "^1.15.2",
+        "laravel-mix-jigsaw": "^1.4.0",
+        "sass": "^1.29.0",
         "sass-loader": "^7.1.0",
-        "tailwindcss": "^1.6.2",
-        "vue-template-compiler": "^2.6.11"
+        "tailwindcss": "^1.9.6",
+        "vue-template-compiler": "^2.6.12"
     }
 }
