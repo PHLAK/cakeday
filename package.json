@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "luxon": "^1.24.1",
-        "vue": "^2.6.11",
+        "vue": "^2.6.12",
         "vue-router": "^3.4.2"
     },
     "devDependencies": {
@@ -21,6 +21,6 @@
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
         "tailwindcss": "^1.6.2",
-        "vue-template-compiler": "^2.6.11"
+        "vue-template-compiler": "^2.6.12"
     }
 }
