@@ -16,8 +16,9 @@ var app = new Vue({
             name: null,
             created: 0,
             comment_karma: 0,
+            icon_img: null,
             link_karma: 0,
-            subreddit: { banner_img: null, icon_img: null, url: null }
+            subreddit: { banner_img: null, url: null }
         },
         loading: false,
         loaded: false,
@@ -35,6 +36,13 @@ var app = new Vue({
             }
 
             return `${this.user.name} • ${title}`;
+        },
+        userImage() {
+            if (this.user.icon_img == null) {
+                return '';
+            }
+
+            return this.user.icon_img.split(/\?/)[0];
         },
         facebookShareUrl() {
             let url = encodeURI(window.location.href);
