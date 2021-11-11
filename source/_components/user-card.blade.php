@@ -3,7 +3,7 @@
         <img :src="user.subreddit.banner_img" alt="" class="max-w-24 h-32 object-cover">
 
         <div class="flex flex-col items-center p-6">
-            <img :src="userImage" :alt="user.name" class="relative rounded-full border-8 border-white w-40 h-40 -mt-24">
+            <img :src="userImage" :alt="user.name" class="relative rounded-full border-8 border-white object-cover w-40 h-40 -mt-24">
 
             <p class="leading-loose">
                 <a :href="`https://www.reddit.com${user.subreddit.url}`" class="text-3xl inline-block hover:underline">
