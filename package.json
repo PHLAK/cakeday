@@ -16,7 +16,7 @@
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
         "cross-env": "^3.2.4",
-        "laravel-mix": "^4.0.0",
+        "laravel-mix": "^6.0.44",
         "laravel-mix-jigsaw": "^1.4.0",
         "sass": "^1.29.0",
         "sass-loader": "^7.1.0",
