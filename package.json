@@ -19,7 +19,7 @@
         "laravel-mix": "^4.0.0",
         "laravel-mix-jigsaw": "^1.4.0",
         "sass": "^1.29.0",
-        "sass-loader": "^7.1.0",
+        "sass-loader": "^13.1.0",
         "tailwindcss": "^1.9.6",
         "vue-template-compiler": "^2.6.12"
     }
