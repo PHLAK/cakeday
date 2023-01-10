@@ -9,7 +9,7 @@
         "watch": "npm run local -- --watch"
     },
     "dependencies": {
-        "luxon": "^1.25.0",
+        "luxon": "^1.28.1",
         "vue": "^2.6.12",
         "vue-router": "^3.4.9"
     },
